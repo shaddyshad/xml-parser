@@ -66,13 +66,9 @@ impl <TokenSink:Sink> Tokenizer<TokenSink> {
     }
 
 
-    // /// Initializes the appropriate structures needed to parse an input and hands over the control to tokenizer
-    // pub fn tokenize(input: &mut , s: TokenSink){
-    //     let mut tok = Tokenizer::new(s);
-
-    //     // feed the input to the tokenizer 
-    //     tok.feed(input);
-    // }
+    pub fn sink(&self) -> &TokenSink {
+        &self.sink
+    }
 
     /// Feed the input to the tokenizer state machine untill we have no more input
     /// 
@@ -109,6 +105,8 @@ impl <TokenSink:Sink> Tokenizer<TokenSink> {
                 self.step();
             }
         }
+
+        self.sink.end()
     }
 
     /// Process the tokens untill we have run out 
@@ -320,20 +318,6 @@ impl <TokenSink:Sink> Tokenizer<TokenSink> {
 
 
 
-macro_rules! unwrap_or_else(
-    ($opt:expr, $else_block:block) => {
-        match $opt {
-            None => $else_block,
-            Some(c) => c,
-        }
-    }
-);
-
-macro_rules! unwrap_or_return(
-    ($opt:expr, $retval:expr) => {
-        unwrap_or_else!($opt, {return $retval })
-    }
-);
 /// Macros used by the tokenizer
 macro_rules! pop_from_set(
     (  $me:expr, $set:expr) => (
