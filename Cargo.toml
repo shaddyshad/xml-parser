@@ -1,0 +1,11 @@
+[package]
+name = "xml-parser"
+version = "0.1.0"
+authors = ["ank3r <mwangishadrack5@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+xml-rs = "^0.8"
+tendril = "^0.4.1"
