@@ -1,6 +1,10 @@
 #[macro_use]
 pub mod utils;
 
+#[macro_use]
+pub mod macros;
+
+
 mod tokenizer;
 mod tree_builder;
 
@@ -10,13 +14,13 @@ use std::path::Path;
 
 use tendril::StrTendril;
 // Sink trait implemented by tree_builder 
-pub use tokenizer::{Sink, Tokenizer, RawToken};
+pub use tokenizer::{Sink, Tokenizer, RawToken, TokenKind};
 pub use tree_builder::TreeBuilder;
 pub use utils::{SmallCharSet, BufferQueue};
 
 
 /// Read a file and feed the tokenizer 
-pub fn from_file(filepath: &str) -> Result<(), String>{
+pub fn from_file(filepath: &str) -> Result<Tokenizer<TreeBuilder>, String>{
     // create a treee builder instance
     let tb = TreeBuilder::new();
     let mut tok = Tokenizer::new(tb);
@@ -35,7 +39,7 @@ pub fn from_file(filepath: &str) -> Result<(), String>{
         }
 
         tok.end();
-        return Ok(());
+        return Ok(tok);
     }
 
     Err(format!("{:?} not found", filepath))
