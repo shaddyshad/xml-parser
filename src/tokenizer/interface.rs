@@ -8,6 +8,9 @@ use tendril::StrTendril;
 pub trait Sink {
     /// process a single token
     fn process(&mut self, token: Token, line_number: u32) -> SinkResult; 
+
+    /// Complete the processing
+    fn end(&mut self);
 }
 
 /// Holds the result of a sink process

@@ -5,13 +5,12 @@ use std::borrow::Cow::{self, Borrowed};
 use tendril::StrTendril;
 mod states;
 
-#[macro_use] mod small_charset;
+use super::utils::{SmallCharSet};
 mod interface;
 mod input;
 
 
 use states::States;
-use small_charset::SmallCharSet;
 pub use interface::{ 
     Sink, 
     TokenKind, 
