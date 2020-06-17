@@ -1,3 +1,6 @@
+#[macro_use]
+pub mod utils;
+
 mod tokenizer;
 mod tree_builder;
 
@@ -7,8 +10,9 @@ use std::path::Path;
 
 use tendril::StrTendril;
 // Sink trait implemented by tree_builder 
-pub use tokenizer::{Sink, Tokenizer};
+pub use tokenizer::{Sink, Tokenizer, RawToken};
 pub use tree_builder::TreeBuilder;
+pub use utils::{SmallCharSet, BufferQueue};
 
 
 /// Read a file and feed the tokenizer 
