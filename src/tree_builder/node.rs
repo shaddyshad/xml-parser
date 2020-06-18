@@ -9,8 +9,8 @@ use super::RawToken;
 /// It keeps a strong reference to the children, and a weak handle to the 
 /// parent node to prevent ownership errors.
 pub struct Node {
-    parent: Cell<Option<WeakHandle>>,
-    children: RefCell<Vec<Handle>>,
+    pub parent: Cell<Option<WeakHandle>>,
+    pub children: RefCell<Vec<Handle>>,
     pub data: RefCell<RawToken>
 }
 
