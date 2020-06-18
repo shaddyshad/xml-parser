@@ -12,7 +12,7 @@ use std::fs::{File};
 use std::io::{self, BufRead};
 use std::path::Path;
 
-use tendril::StrTendril;
+pub use tendril::StrTendril;
 // Sink trait implemented by tree_builder 
 pub use tokenizer::{Sink, Tokenizer, RawToken, TokenKind};
 pub use tree_builder::TreeBuilder;
