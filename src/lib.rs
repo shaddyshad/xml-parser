@@ -5,8 +5,8 @@ pub mod utils;
 pub mod macros;
 
 
-mod tokenizer;
-mod tree_builder;
+pub mod tokenizer;
+pub mod tree_builder;
 
 use std::fs::{File};
 use std::io::{self, BufRead};
@@ -15,7 +15,7 @@ use std::path::Path;
 pub use tendril::StrTendril;
 // Sink trait implemented by tree_builder 
 pub use tokenizer::{Sink, Tokenizer, RawToken, TokenKind};
-pub use tree_builder::TreeBuilder;
+pub use tree_builder::{TreeBuilder, Handle};
 pub use utils::{SmallCharSet, BufferQueue};
 
 
