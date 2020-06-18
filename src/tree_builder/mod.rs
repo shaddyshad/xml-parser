@@ -4,7 +4,7 @@ use super::{BufferQueue, TokenKind};
 mod node;
 mod stack;
 
-use node::{Node, Handle};
+pub use node::{Node, Handle};
 use stack::Stack;
 
 
