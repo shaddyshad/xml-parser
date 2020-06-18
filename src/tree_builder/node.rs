@@ -11,7 +11,7 @@ use super::RawToken;
 pub struct Node {
     parent: Cell<Option<WeakHandle>>,
     children: RefCell<Vec<Handle>>,
-    data: RefCell<RawToken>
+    pub data: RefCell<RawToken>
 }
 
 /// Handle - strong reference to a node 

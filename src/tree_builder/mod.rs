@@ -66,14 +66,21 @@ impl TreeBuilder {
                 
             }else{
                 // finish processing and pop from the top of the stack
-                self.finish_processing()
+                self.finish_processing(tok.clone())
             }
         }
     }
 
     /// Complete the processing of a token
-    fn finish_processing(&mut self){
+    fn finish_processing(&mut self, token: RawToken){
         let t = self.processing_stack.pop().unwrap();
+
+        if token.value.is_some(){
+            let v = token.value.unwrap();
+
+            // add it ot tokens  t 
+            t.data.borrow_mut().set_value(v);
+        }
 
         if self.processing_stack.is_empty(){
             // set the tree 
