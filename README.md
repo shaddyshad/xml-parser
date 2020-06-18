@@ -6,7 +6,7 @@ An xml parser library for rust.
 Add xml parser in your `Cargo.toml` file 
 ````
     [dependencies]
-    xml_parser = {git: 'git@github.com:shaddyshad/xml-parser.git'}
+    xml-parser = {git = "https://github.com/shaddyshad/xml-parser.git"}
 ````
 
 ## Usage
