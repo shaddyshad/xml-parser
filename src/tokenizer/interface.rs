@@ -39,6 +39,12 @@ pub struct RawToken {
     pub value: Option<StrTendril> 
 }
 
+impl RawToken {
+    pub fn set_value(&mut self, value: StrTendril){
+        self.value = Some(value)
+    }
+}
+
 /// Token kind, can be an opening or closing token
 #[derive(Debug, Eq, PartialEq, Clone, Copy )]
 pub enum TokenKind {
