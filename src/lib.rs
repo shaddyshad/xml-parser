@@ -30,7 +30,7 @@ pub fn from_file(filepath: &str) -> Result<Tokenizer<TreeBuilder>, String>{
         // read the file line by line, feeding it to the tokenizer
         for line in lines {
             if let Ok(l) = line {
-                let buf = StrTendril::from(l);
+                let buf = StrTendril::from(l.trim());
 
                 // feed to the tokenizer
                 // we need to check if the 
