@@ -44,7 +44,7 @@ impl TreeBuilder {
     fn process_and_complete(&mut self, token: RawToken){
         // insert into the buffer and run the step command
         self.token_buffer.push_back(token);
-        // println!("Token buffer {:#?}", &self.token_buffer );
+        println!("Token buffer {:#?}", &self.token_buffer );
 
         self.build()
     }
@@ -119,9 +119,9 @@ impl TreeBuilder {
 
         self.currently_processing = n;
 
-        // if self.token_buffer.is_empty(){
-        //     self.tree = self.processing_stack.pop();
-        // }
+        if self.processing_stack.is_empty(){
+            self.tree = self.processing_stack.pop();
+        }
     }
 
     /// Add a node to the node on the top of stack 
