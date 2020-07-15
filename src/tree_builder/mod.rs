@@ -44,7 +44,6 @@ impl TreeBuilder {
     fn process_and_complete(&mut self, token: RawToken){
         // insert into the buffer and run the step command
         self.token_buffer.push_back(token);
-        println!("Token buffer {:#?}", &self.token_buffer );
 
         self.build()
     }
@@ -58,7 +57,7 @@ impl TreeBuilder {
                 return;
             }   
         }
-        
+
         self.next();
 
         if let Some(ref tok) = self.currently_processing{
@@ -66,13 +65,11 @@ impl TreeBuilder {
             if let TokenKind::Opening = tok.kind {
                 // create and push a node on top of the stack
                 let t = self.get_handle(tok.clone());
-                println!("Handle for {:#?}", &t);
                 // if the tag is self closing, then create and insert it 
                 if tok.self_closing {
                     self.add_to_previous(t);
                 }else{
                     self.processing_stack.push(t);
-                    println!("Current processing stack {:#?}", &self.processing_stack);
                 }
                 
             }else{
@@ -85,8 +82,6 @@ impl TreeBuilder {
     /// Complete the processing of a token
     fn finish_processing(&mut self, token: RawToken){
         let t = self.processing_stack.pop().unwrap();
-        println!("Finishing the processing of {:#?}", &t);
-        println!("Stack is empty {}", self.processing_stack.is_empty());
 
         if token.value.is_some(){
             let v = token.value.unwrap();
@@ -174,11 +169,13 @@ impl Sink for TreeBuilder {
             self.build();
         }
 
-        let head = self.processing_stack.pop();
-        println!("Tree head {:#?}", &head);
+        if self.tree.is_none(){
+            let head = self.processing_stack.pop();
+            // 
+            self.tree = head;
+        }
 
-        // 
-        self.tree = head;
+        
 
 
     }
