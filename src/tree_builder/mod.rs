@@ -77,6 +77,8 @@ impl TreeBuilder {
     /// Complete the processing of a token
     fn finish_processing(&mut self, token: RawToken){
         let t = self.processing_stack.pop().unwrap();
+        println!("Finishing the processing of {:#?}", &t);
+        println!("Stack is empty {}", self.processing_stack.is_empty());
 
         if token.value.is_some(){
             let v = token.value.unwrap();
