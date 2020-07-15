@@ -417,6 +417,7 @@ impl<TokenSink: Sink> Tokenizer<TokenSink>{
             States::BeforeAttributeValue => loop {
                 match self.input_buffer.next(){
                     Some('"') | Some('\'') => go!(self: to AttributeValue),
+                    Some('>') => go!(self: to Document),
                     _ => go!(self: error; to Document)
                 }
             },
