@@ -119,9 +119,9 @@ impl TreeBuilder {
 
         self.currently_processing = n;
 
-        if self.token_buffer.is_empty(){
-            self.tree = self.processing_stack.pop();
-        }
+        // if self.token_buffer.is_empty(){
+        //     self.tree = self.processing_stack.pop();
+        // }
     }
 
     /// Add a node to the node on the top of stack 
