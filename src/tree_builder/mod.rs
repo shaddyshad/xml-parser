@@ -118,7 +118,7 @@ impl TreeBuilder {
 
         self.currently_processing = n;
 
-        if !self.processing_stack.is_empty(){
+        if self.processing_stack.is_empty(){
             self.tree = self.processing_stack.pop();
         }
     }

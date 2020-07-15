@@ -351,7 +351,7 @@ macro_rules! go(
 impl<TokenSink: Sink> Tokenizer<TokenSink>{
     /// Run the tokenizer state machine as long as we can
     fn step(&mut self) -> bool {
-        println!("processing in state {:?}", self.state);
+        // println!("processing in state {:?}", self.state);
 
         match self.state {
             States::Document => loop {
