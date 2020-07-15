@@ -18,6 +18,22 @@ pub use tokenizer::{Sink, Tokenizer, RawToken, TokenKind};
 pub use tree_builder::{TreeBuilder, Handle};
 pub use utils::{SmallCharSet, BufferQueue};
 
+// read some text
+fn parse_text(input: String) -> Result<Tokenizer<TreeBuilder>, String> {
+    // create tree builder instance
+    let tb = TreeBuilder::new();
+    let mut tok = Tokenizer::new(tb);       // tokenize 
+
+    // split the content by lines 
+    let buf = StrTendril::from(input);
+
+    // feed and finish 
+    let _ = tok.feed(buf);
+    tok.end();
+    
+
+    return Ok(tok);
+}
 
 /// Read a file and feed the tokenizer 
 pub fn from_file(filepath: &str) -> Result<Tokenizer<TreeBuilder>, String>{
