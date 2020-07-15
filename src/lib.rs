@@ -19,7 +19,7 @@ pub use tree_builder::{TreeBuilder, Handle};
 pub use utils::{SmallCharSet, BufferQueue};
 
 // read some text
-fn parse_text(input: String) -> Result<Tokenizer<TreeBuilder>, String> {
+pub fn parse_text(input: String) -> Result<Tokenizer<TreeBuilder>, String> {
     // create tree builder instance
     let tb = TreeBuilder::new();
     let mut tok = Tokenizer::new(tb);       // tokenize 
