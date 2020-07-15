@@ -136,6 +136,7 @@ impl Sink for TreeBuilder {
     /// Process a single token
     fn process(&mut self, token: Token, line_number: u32) -> SinkResult{
         self.line_number = line_number;
+        println!("Found token {:#?}", &token);
 
         // check for an error token
         match token {
