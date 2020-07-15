@@ -28,24 +28,10 @@ impl<T> Stack<T> {
         self.stack.is_empty()
     }
 
-    //check the size of stack
-    pub fn size(&self) -> usize {
-        self.stack.len()
-    }
-
-    //clear the stack
-    pub fn clear(&mut self) {
-        self.stack.clear();
-        assert!(self.stack.is_empty());
-    }
 
     //top of the stack
     pub fn top(&self) -> Option<&T> {
         self.stack.front()
     }
 
-    //get the top mutable
-    pub fn top_mut(&mut self) -> Option<&mut T> {
-        self.stack.front_mut()
-    }
 }

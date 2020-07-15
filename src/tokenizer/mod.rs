@@ -293,7 +293,8 @@ impl <TokenSink:Sink> Tokenizer<TokenSink> {
 
     /// emit an attrbute name 
     fn emit_attribute_name(&mut self, attr_name: StrTendril ){
-        self.current_token_attr_name = attr_name;
+        // append to the current name
+        self.current_token_attr_name.push_tendril(&attr_name);
     }
 
     /// Emits when a bad character is encountered during tokenzation 
@@ -463,13 +464,12 @@ impl<TokenSink: Sink> Tokenizer<TokenSink>{
 
             // processing an attribute value 
             States::AttributeValue => loop {
-                let set = small_char_set!(b'"'  b'\'' b' ');
+                let set = small_char_set!(b'"'  b'\'' );
 
                 match pop_from_set!(self, set){
                     FromSet('"') | FromSet('\'') => go!(self: emit_attribute; to BeforeAttributeName),
-                    FromSet(' ') => go!(self: to BeforeAttributeName),
-                    // to prevent `non-exhaustive patterns` complain by the compiler
                     FromSet(_) => (),
+                    // to prevent `non-exhaustive patterns` complain by the compiler
                     NotFromSet(c) => self.emit_attribute_value(c),
                 }
             }
