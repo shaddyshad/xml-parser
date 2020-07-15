@@ -51,6 +51,14 @@ impl TreeBuilder {
 
     /// Build a treee using token buffer provided
     fn build(&mut self){
+        if self.processing_stack.is_empty() && self.tree.is_some(){
+            if !self.token_buffer.is_empty(){
+                self.token_buffer.clear() ;
+
+                return;
+            }   
+        }
+        
         self.next();
 
         if let Some(ref tok) = self.currently_processing{

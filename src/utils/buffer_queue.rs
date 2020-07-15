@@ -33,7 +33,10 @@ impl BufferQueue {
         self.buffers.len()
     }
 
-
+    /// clear the buffer
+    pub fn clear(&mut self) {
+        self.buffers.clear();
+    }
 
     /// Retrieve the next character in the top of the buffer
     pub fn next(&mut self) -> Option<RawToken> {
