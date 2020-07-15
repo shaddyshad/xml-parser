@@ -58,11 +58,13 @@ impl TreeBuilder {
             if let TokenKind::Opening = tok.kind {
                 // create and push a node on top of the stack
                 let t = self.get_handle(tok.clone());
+                println!("Handle for {:#?}", &t);
                 // if the tag is self closing, then create and insert it 
                 if tok.self_closing {
                     self.add_to_previous(t);
                 }else{
                     self.processing_stack.push(t);
+                    println!("Current processing stack {:#?}", &self.processing_stack);
                 }
                 
             }else{
