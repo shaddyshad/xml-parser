@@ -161,8 +161,11 @@ impl Sink for TreeBuilder {
             self.build();
         }
 
+        let head = self.processing_stack.pop();
+        println!("Tree head {:#?}", &head);
+
         // 
-        self.tree = self.processing_stack.pop();
+        self.tree = head;
 
 
     }
