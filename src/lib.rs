@@ -31,7 +31,6 @@ pub fn parse_text(input: String) -> Result<Tokenizer<TreeBuilder>, String> {
     let _ = tok.feed(buf);
     tok.end();
     
-    println!("{:#?}", &tok.sink());
     return Ok(tok);
 }
 
